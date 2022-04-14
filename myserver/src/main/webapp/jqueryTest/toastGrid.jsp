@@ -56,8 +56,10 @@
 			    }
 			  ],
 			  data: {
-				  api : {  readData: { url: '/readEmp'} }
-			  }
+				  api : {  readData: { url: '../readEmp', method: 'GET'} },
+				  modifyData : {url: '/modifyEmp', method: 'POST'}
+			  },
+			  contentType : "application/json",
 		
 			});
 			//ajax로 데이터 가져옴. 밑에 data에 대입.
@@ -76,12 +78,27 @@
 
 			Grid.applyTheme('striped'); // Call API of static method
 			
-		        
+		    $("#btnIns").on("click", function(){
+		    	instance.appendRow(1); 
+		    });
+			$("#btnIns").on("click", function(){
+				instance.removeRow( ________ ); //getfocusCell
+		    })
+		    $("#btnIns").on("click", function(){
+		    	instance.request('modifyData');
+		    })
 		       
-	})
+	})//$(function()) 괄호
+	//추가 삭제 저장 버튼 , 이벤트적용. 등록 눌럿을 때 빈줄 추가.
 	</script>
 </head>
 <body>
+	
+	<button id="btnIns">추가</button>
+	<button id="btnDel">삭제</button>
+	<button id="btnMdf">저장</button>
 	<div id="grid"></div>
+	
+	
 </body>
 </html>
