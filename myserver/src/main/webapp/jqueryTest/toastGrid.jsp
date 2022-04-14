@@ -81,10 +81,11 @@
 		    $("#btnIns").on("click", function(){
 		    	instance.appendRow(1); 
 		    });
-			$("#btnIns").on("click", function(){
-				instance.removeRow( ________ ); //getfocusCell
+			$("#btnDel").on("click", function(){
+				if(instance.getFocusedCell())
+				instance.removeRow(instance.getFocusedCell().rowKey); //getfocusCell
 		    })
-		    $("#btnIns").on("click", function(){
+		    $("#btnMdf").on("click", function(){
 		    	instance.request('modifyData');
 		    })
 		       
