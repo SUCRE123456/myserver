@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- users_mapper.xml -->
+<mapper namespace="com.yedam.myserver.movie.mapper.MovieMapper">
+
+
+<!-- 사용자 전체조회 -->
+<select id="find" resultType="map">
+	select id        "id", 
+	       password  "password", 
+	       name      "name", 
+	       role      "role"
+	from users
+</select>
+
+<!-- 사용자 이름 검색 -->
+<select id="findByName" resultType="movieVO" parameterType="movieVO">
+	select id, password, name, role
+	from users
+	<where>
+		<if test="name != null and name != '' ">
+			and name like '%' || #{name} || '%'
+		</if>
+	</where>
+</select>
+
+<!-- 사용자 단건조회 -->
+<select id="findById" parameterType="movieVO" resultType="movieVO">
+	select id,
+	password, name, role
+	from users
+	where id=#{id}
+</select>
+
+
+<!-- 등록 -->
+<insert id="persist" parameterType="movieVO">
+	insert into movie 
+	values ( #{movieCd},
+	#{movieNm},
+	#{showTm},
+	#{openDt},
+	#{typeNm},
+	#{genreNm},
+	#{peopleNm} )
+</insert>
+
+<!-- 수정 -->
+<update id="merge" parameterType="movieVO">
+	update users set
+	password = #{password},
+	name = #{name},
+	role = #{role}
+	where id = #{id}
+</update>
+
+<!-- 삭제 -->
+<delete id="remove" parameterType="movieVO">
+	delete from users
+	where id = #{id}
+</delete>
+
+</mapper>

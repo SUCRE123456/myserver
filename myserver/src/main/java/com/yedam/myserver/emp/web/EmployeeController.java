@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ public class EmployeeController {
 	//사원검색
 	@RequestMapping(value="/empSelect")
 	public List<Employee> selectDepartment() {
-		return employeeDao.findEmployees();
+		return employeeDao.findEmployees(null);
 	}	
 	
 	//부서와 직업 검색
@@ -46,6 +47,14 @@ public class EmployeeController {
 		return bean;
 	}
 	
+	//사원등록
+	@RequestMapping(value="/empInsertjson", method=RequestMethod.POST )
+		public  Employee insertEmployees(@RequestBody Employee bean) {
+			employeeDao.persist(bean);
+			return bean;
+		}
+	
+		
 	//사원정보수정
 	@RequestMapping(value="/empUpdate", method=RequestMethod.POST )
 	public  Employee updateEmployees(Employee bean, HttpServletResponse response) {

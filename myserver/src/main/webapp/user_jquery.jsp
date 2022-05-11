@@ -74,9 +74,7 @@
 	</div>
 <script>    
 	const url = "http://localhost/myserver/users"
-	
-	
-	
+
 	
 	//등록버튼 : 직접이벤트 
 	function userInsert(){
@@ -89,56 +87,12 @@
 					contentType : "application/json"	
 				   })
 			.done(function(response){
+				console.log(response);
 					$("tbody").prepend( makeTr(response) );	
 								})
-
 		})
 	}
-	//수정버튼 : 직접이벤트
-	function userUpdate(){
-		//버튼 클릭이벤트 - > ajax호출.
-		/* $("#btnUpdate").on("click", function(){
 	
-			//등록과 동일 : post - > put/  prepend => replace
-		const ajax = new XMLHttpRequest();
-		const url = "http://localhost/myserver/users";
-		ajax.onload = function () {
-			let user = JSON.parse(ajax.response);
-
-				let newTr = makeTr(user)
-				let oldTr = document.querySelector('[data-id'+user.id+']')
-				console.log(oldTr)
-				document.getElementsByTagName("tbody")[0].replaceChild(newTr, oldTr);  //????????
-		}
-		ajax.open("PUT", url);
-		ajax.setRequestHeader("Content-type", "application/json");
-		
-			let id = form1.id.value 
-			let name = form1.name.value
-			let password = form1.password.value
-			let role = form1.role.value
-				let obj = {id, name, password, role}
-		ajax.send(JSON.stringify(obj) );
-			
-		}) */
-	}
-	//조회버튼 : 그룹이벤트 
-	function userSelect(){
-		$("table").on("click", ".btnUpd", function(){
-			const userId = $(this).closest("tr").children().first().html()
-			const url = "users/"+userId;
-			console.log(url);
-			$.ajax(url)
-			 .done(function(res){
-				 	form1.id.value = res.id;
-					form1.password.value = res.password;
-					form1.name.value = res.name;
-					form1.role.value = res.role;
-			 })
-		})
-		}
-		
-		
 	//삭제버튼 : 그룹이벤트 
 	function userDelete(){
 		$("table").on("click", ".btnDel", function(){
@@ -156,6 +110,47 @@
 			 })
 		})
 	}
+		
+	//수정버튼 : 직접이벤트
+	function userUpdate(){
+		//버튼 클릭이벤트 - > ajax호출.
+		 $("#btnUpdate").on("click", function(){
+	
+			//등록과 동일 : post - > put/  prepend => replace
+		$.ajax({
+					url : "users", 
+					method : 'PUT',
+					data : JSON.stringify($("#form1").serializeObject()),
+					contentType : "application/json"	
+				   })
+			.done(function(response){
+				let newTr = makeTr(response)
+				let oldTr = document.querySelector('[data-id='+response.id+']')
+				console.log(oldTr)
+				document.getElementsByTagName("tbody")[0].replaceChild(newTr, oldTr);  //????????
+						
+								})
+		})
+		}
+	
+	//조회버튼 : 그룹이벤트 
+	function userSelect(){
+		$("table").on("click", ".btnUpd", function(){
+			const userId = $(this).closest("tr").children().first().html()
+			const url = "users/"+userId;
+			console.log(url);
+			$.ajax(url)
+			 .done(function(res){
+				 	form1.id.value = res.id;
+					form1.password.value = res.password;
+					form1.name.value = res.name;
+					form1.role.value = res.role;
+			 })
+		})
+		}
+		
+		
+	
 	
 	function list() {
 		$.ajax(url)

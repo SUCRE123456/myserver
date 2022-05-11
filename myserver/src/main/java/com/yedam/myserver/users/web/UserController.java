@@ -25,19 +25,19 @@ public class UserController {
 	public List<UserVO> userSelect() {
 		return mapper.find();
 	}
-	
+
 	@GetMapping("/users/{id}")
 	public UserVO userSelectList(@PathVariable String id, UserVO vo) {
 		vo.setId(id);
 		return mapper.findById(vo);
 	}
-		
-	@PostMapping("/users") //파라미터 queryString, jsonString(@requestbody 입력시 jsontype)
+
+	@PostMapping("/users") //파라미터 queryString, jsonString(@requestbody 입력시 jsontype 받음.)
 	public UserVO userInsert(@RequestBody UserVO vo) {
 		 mapper.persist(vo);
 		 return vo;
 	}
-	
+
 	@PutMapping("/users")
 	public UserVO userUpdate(@RequestBody UserVO vo) {
 		 mapper.merge(vo);
@@ -45,7 +45,11 @@ public class UserController {
 	}	
 	@DeleteMapping("/users/{id}")
 	public UserVO userDelete(@PathVariable String id, UserVO vo) {
+		//System.out.println(vo.getId());
+		//System.out.println(vo.getName());
+
 		 vo.setId(id);
+		 System.out.println(vo.getName()); //null
 		 mapper.remove(vo);
 		 return vo;
 	}		

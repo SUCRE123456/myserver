@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.2.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="deptList" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c778b4b4-7f21-4aa8-b6f5-a750f8f7793a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hr"/>
+	<queryString language="SQL">
+		<![CDATA[select * 
+from departments]]>
+	</queryString>
+	<field name="DEPARTMENT_ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="DEPARTMENT_ID"/>
+	</field>
+	<field name="DEPARTMENT_NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DEPARTMENT_NAME"/>
+	</field>
+	<field name="MANAGER_ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MANAGER_ID"/>
+	</field>
+	<field name="LOCATION_ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="LOCATION_ID"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="227" y="33" width="123" height="30" uuid="34f64cf5-3077-4cb3-a2d4-1c0c30a20cf1"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[DeptList]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="71">
+			<staticText>
+				<reportElement x="0" y="36" width="140" height="30" uuid="dfff90d2-4834-4c26-a4a9-b9a4ff384cf5"/>
+				<text><![CDATA[부서번호]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="36" width="138" height="30" uuid="2a6de423-805b-4d67-a63f-f5e0b45be20e"/>
+				<text><![CDATA[부서명]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="36" width="139" height="30" uuid="ec0a129a-d12d-452e-82ee-07c47c8aa12c"/>
+				<text><![CDATA[매니저번호]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="36" width="138" height="30" uuid="0d6d42fe-fdd9-4470-ada9-a30f232dfd02"/>
+				<text><![CDATA[위치번호]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="141" height="30" uuid="7ebf5083-152f-49e4-913a-01e1dab99d93"/>
+				<textFieldExpression><![CDATA[$F{DEPARTMENT_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="30" uuid="359a4c89-6bc2-462e-b9af-95d9e03a3350"/>
+				<textFieldExpression><![CDATA[$F{DEPARTMENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="138" height="30" uuid="6ce58376-445f-4ef4-81c4-c51fb31c0c79"/>
+				<textFieldExpression><![CDATA[$F{MANAGER_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="138" height="30" uuid="5285f495-a717-42a8-82f2-a46d39297656"/>
+				<textFieldExpression><![CDATA[$F{LOCATION_ID}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="29" width="555" height="1" uuid="314eea99-b956-4113-8518-53a2fa7d799c"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="170" splitType="Stretch"/>
+	</summary>
+</jasperReport>

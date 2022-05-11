@@ -5,6 +5,11 @@
 <select id="findEmployees"  resultType="employee">
 	select *
 	from employees
+	<where>
+	<if test = "employee_id != null and employee_id != ''">
+		employee_id = #{employee_id}
+	</if>
+	</where>
 	order by employee_id  
 </select>
 
@@ -56,10 +61,11 @@
 
 <select id="findStat" resultType="map">
 SELECT DEPARTMENT_NAME AS "departmentName", 
-	   COUNT(*) 	   AS "cnt"
+	   COUNT(*) 	   AS "cnt",
+	   E.DEPARTMENT_ID AS "departmentId"
 FROM EMPLOYEES E, DEPARTMENTS D
 WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
-GROUP BY DEPARTMENT_NAME
+GROUP BY DEPARTMENT_NAME, E.DEPARTMENT_ID
 ORDER BY DEPARTMENT_NAME
 </select>
 

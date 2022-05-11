@@ -51,7 +51,7 @@ public class EmployeeGridController {
 		pagination.put("totalCount", 100);  //나중에 전체 건수 구하는 쿼리 구하고 바꿔주기.
 		
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("contents", mapper.findEmployees() );
+		data.put("contents", mapper.findEmployees(null) );
 		data.put("pagination", pagination );
 		
 		Map<String, Object> map = new HashMap<String, Object>();

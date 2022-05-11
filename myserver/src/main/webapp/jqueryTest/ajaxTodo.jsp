@@ -43,8 +43,8 @@
 			//completed가 true이며 color = red
 			let div = $("<div>")	
 				div.html(d.title )
-			   .data("id", d.id)
-			   .appendTo($("#list"))			
+			   	   .data("id", d.id)
+			       .appendTo($("#list"))			
 		
 			   	if(d.completed){ //true값임.
 			   		div.css("color", "red")

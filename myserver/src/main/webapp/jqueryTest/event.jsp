@@ -34,7 +34,7 @@
 				$("<li>").append( $("<span>").html( $("#book").val() ) )
 						 .data("isbn", num)
 						 .appendTo( $("ul") )
-						 
+				
 				$(this).val("")
 			}
 		})
